@@ -42,3 +42,4 @@ services:
       - ./user_builds:/app/user_builds
     env_file:
       - ${RTD_ENV_FILE:-example.env}
+    command: ["/app/bin/wait-for-it.sh", "database:5432", "--", "supervisord", "-c", "/etc/supervisord.conf", "-n"]
